@@ -11,14 +11,38 @@ include('conec.php');
 <?php
 //-----------------Requete pour lire l'ensemble des articles---------------//
 
-$display = $pdo->query('SELECT * FROM article');
-$list = $display->fetchAll();
+$req = $pdo->query('SELECT * FROM article');
 
-foreach ($list as $value) {
-    echo '<h3>'.$value->titre.'</h3><img src="uploads/'.$value->fichier.'"><p>'.$value->texte.'</p><p>Ecrit le : '.$value->date.'</p>
-    <form method="post" action="com.php"><input class="btn" id="btn3" type="submit" name="submit4" value="commentaires"></form><hr>';
+while ($data = $req->fetch()){
+
+    ?>
+      <h3><?php echo htmlspecialchars($data->titre); ?></h3>
+
+      <?php echo '<img src="uploads/'.$data->fichier.'">' ?>
+
+      <p><?php echo htmlspecialchars($data->texte); ?></p>
+
+      <em>le <?php echo $data->date; ?></em><hr>
+
+
+<!-- - - - - - - - - -boutons choix- - - - - - - - - - - - - - - - - - -->
+
+      <a href="com.php?artid=<?php echo ($data->id); ?>">Commentaires</a></em>
+      <a href="edit.php?artid=<?php echo ($data->id); ?>">
+      <span class="glyphicon glyphicon-edit"></span> Edit</a>
+      <a href="delete.php?artid=<?php echo ($data->id); ?>">
+      <span class="glyphicon glyphicon-remove-circle"></span> Delete</a><hr><br>
+
+    <?php
+
 }
-?>
+    $req->closeCursor();
+
+
+
+
+    ?>
+
 </section>
 </body>
 </html>
