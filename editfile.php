@@ -1,13 +1,23 @@
 <?php
 
-include('header.php');
-include('conec.php');
-include('upload.php');
 
 $title=$_POST['title'];
 $file=$_FILES['userfile']['name'];
 $text=$_POST['text'];
 $artid=$_POST['artid'];
+
+
+
+include('header.php');
+include('conec.php');
+include('upload.php');
+
+if ($file != NULL){
+    $file= $file;
+}
+else{
+  $file = $data['fichier'];
+}
 
 var_dump($title, $file, $text, $artid);
 
@@ -18,9 +28,15 @@ $req->bindParam(':texte', $text);
 $req->bindParam(':id', $artid);
 
 $req->execute();
+$data=$req->fetch();
+
+
+
+
+
 
 
 
 print_r($pdo->errorInfo());
-header('Location: edit.php?artid='.$artid.'');
+header('Location: edit.php?artid='.$artid.','.$file.'');
  ?>

@@ -4,9 +4,9 @@ include('header.php');
 include('conec.php');
 ?>
 
+<h1>Liste des Articles</h1>
 
 <section class="container">
-<h1>Liste des Articles</h1>
 
 <?php
 //-----------------Requete pour lire l'ensemble des articles---------------//
@@ -15,7 +15,7 @@ $req = $pdo->query('SELECT * FROM article');
 
 while ($data = $req->fetch()){
 
-    ?>
+    ?><div class="content">
       <h3><?php echo htmlspecialchars($data->titre); ?></h3>
 
       <?php echo '<img src="uploads/'.$data->fichier.'">' ?>
@@ -23,15 +23,16 @@ while ($data = $req->fetch()){
       <p><?php echo htmlspecialchars($data->texte); ?></p>
 
       <em>le <?php echo $data->date; ?></em><hr>
-
+    </div>
 
 <!-- - - - - - - - - -boutons choix- - - - - - - - - - - - - - - - - - -->
 
-      <a href="com.php?artid=<?php echo ($data->id); ?>">Commentaires</a></em>
-      <a href="edit.php?artid=<?php echo ($data->id); ?>">
-      <span class="glyphicon glyphicon-edit"></span> Edit</a>
-      <a href="delete.php?artid=<?php echo ($data->id); ?>">
-      <span class="glyphicon glyphicon-remove-circle"></span> Delete</a><hr><br>
+      <a class="btn btn-primary" href="com.php?artid=<?php echo ($data->id); ?>">
+      <span class="glyphicon glyphicon-comment"></span> Commentaires</a>
+      <a class="btn btn-success" href="edit.php?artid=<?php echo ($data->id); ?>">
+      <span class="glyphicon glyphicon-edit"></span> Modifier</a>
+      <a class="btn btn-danger" href="delete.php?artid=<?php echo ($data->id); ?>">
+      <span class="glyphicon glyphicon-remove-circle"></span> Supprimer</a><hr>
 
     <?php
 

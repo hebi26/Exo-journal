@@ -12,8 +12,10 @@ $req->execute(array($_GET['artid']));
 
 <section class="container">
 
+
 <h3>Article supprimé</h3>
-<a href="display.php">Retour aux articles</a>
+<a class="btn btn-primary" href="display.php">Retour</a>
+
 
 </section>
 </body>

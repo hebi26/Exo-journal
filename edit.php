@@ -37,7 +37,7 @@ $data=$req->fetch();
     <label for="Text">Texte de l'article</label>
     <textarea class="form-control" rows="5" name="text" id="Text"><?php echo($data->texte); ?></textarea>
   </div>
-  <input class="btn" id="btn3" type="submit" name="submit" value="Soumettre">
+  <input class="btn btn-success" id="btn3" type="submit" name="submit" value="Soumettre">
 </form>
 
  <!-- - - - - - - - afficher l'article concerné - - - - - - -  -->

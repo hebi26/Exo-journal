@@ -14,14 +14,6 @@
     </head>
     <body>
       <nav class="navbar">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar2" aria-expanded="false" aria-controls="navbar">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar bar2"></span>
-              <span class="icon-bar bar2"></span>
-              <span class="icon-bar bar2"></span>
-            </button>
-          </div>
           <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
               <li><a href="index.php">Créer</a></li>
